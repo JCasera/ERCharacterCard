@@ -1,0 +1,380 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Assets/StatsFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/ER_title_card.png" type="Texture" id=3]
+[ext_resource path="res://Assets/grad_to_black.png" type="Texture" id=4]
+[ext_resource path="res://StatsBox.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 2 )
+LineEdit/colors/cursor_color = Color( 0.941176, 0.941176, 0.941176, 0 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 0 )
+LineEdit/colors/selection_color = Color( 1, 1, 1, 0 )
+LineEdit/constants/minimum_spaces = 5
+LineEdit/styles/focus = SubResource( 3 )
+LineEdit/styles/normal = SubResource( 2 )
+
+[node name="Main" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -4.0
+margin_bottom = 2.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="TextureRect" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 709.0
+margin_bottom = 875.0
+expand = true
+stretch_mode = 6
+
+[node name="Gradient" type="TextureRect" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 709.0
+margin_bottom = 875.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+
+[node name="Overlay" type="Control" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 709.0
+margin_bottom = 875.0
+
+[node name="StatsShade" type="ColorRect" parent="Overlay"]
+visible = false
+margin_left = 175.0
+margin_top = 252.0
+margin_right = 516.0
+margin_bottom = 601.0
+color = Color( 0, 0, 0, 0.0705882 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsBox" type="VBoxContainer" parent="Overlay"]
+margin_left = 175.0
+margin_top = 259.0
+margin_right = 535.0
+margin_bottom = 592.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 9
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_right = 341.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 341, 0 )
+size_flags_horizontal = 0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Level"]
+margin_right = 323.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Level"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Level"]
+margin_left = 327.0
+margin_right = 341.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+
+[node name="Vigor" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_top = 38.0
+margin_right = 360.0
+margin_bottom = 67.0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Vigor"]
+margin_right = 305.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Vigor"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Vigor"]
+visible = false
+margin_left = 198.0
+margin_top = 5.0
+margin_right = 227.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Vigor"]
+margin_left = 309.0
+margin_right = 360.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 1 )
+max_value = 99.0
+value = 10.0
+rounded = true
+align = 1
+
+[node name="Mind" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_top = 76.0
+margin_right = 360.0
+margin_bottom = 105.0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Mind"]
+margin_right = 305.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Mind"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Mind"]
+visible = false
+margin_left = 257.0
+margin_right = 286.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Mind"]
+margin_left = 309.0
+margin_right = 360.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 1 )
+max_value = 99.0
+value = 10.0
+rounded = true
+align = 1
+
+[node name="Endurance" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_top = 114.0
+margin_right = 360.0
+margin_bottom = 143.0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Endurance"]
+margin_right = 305.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Endurance"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Endurance"]
+visible = false
+margin_left = 276.0
+margin_right = 305.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Endurance"]
+margin_left = 309.0
+margin_right = 360.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 1 )
+max_value = 99.0
+value = 10.0
+rounded = true
+align = 1
+
+[node name="Strength" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_top = 152.0
+margin_right = 360.0
+margin_bottom = 181.0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Strength"]
+margin_right = 305.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Strength"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Strength"]
+visible = false
+margin_left = 276.0
+margin_right = 305.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Strength"]
+margin_left = 309.0
+margin_right = 360.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 1 )
+max_value = 99.0
+value = 10.0
+rounded = true
+align = 1
+
+[node name="Dexterity" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_top = 190.0
+margin_right = 360.0
+margin_bottom = 219.0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Dexterity"]
+margin_right = 305.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Dexterity"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Dexterity"]
+visible = false
+margin_left = 276.0
+margin_right = 305.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Dexterity"]
+margin_left = 309.0
+margin_right = 360.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 1 )
+max_value = 99.0
+value = 10.0
+rounded = true
+align = 1
+
+[node name="Intelligence" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_top = 228.0
+margin_right = 360.0
+margin_bottom = 257.0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Intelligence"]
+margin_right = 305.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Intelligence"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Intelligence"]
+visible = false
+margin_left = 276.0
+margin_right = 305.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Intelligence"]
+margin_left = 309.0
+margin_right = 360.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 1 )
+max_value = 99.0
+value = 10.0
+rounded = true
+align = 1
+
+[node name="Faith" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_top = 266.0
+margin_right = 360.0
+margin_bottom = 295.0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Faith"]
+margin_right = 305.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Faith"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Faith"]
+visible = false
+margin_left = 276.0
+margin_right = 305.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Faith"]
+margin_left = 309.0
+margin_right = 360.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 1 )
+max_value = 99.0
+value = 10.0
+rounded = true
+align = 1
+
+[node name="Arcane" type="HBoxContainer" parent="Overlay/StatsBox"]
+margin_top = 304.0
+margin_right = 360.0
+margin_bottom = 333.0
+
+[node name="Stat" type="Label" parent="Overlay/StatsBox/Arcane"]
+margin_right = 305.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Arcane"
+
+[node name="Value" type="Label" parent="Overlay/StatsBox/Arcane"]
+visible = false
+margin_left = 276.0
+margin_right = 305.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Arcane"]
+margin_left = 309.0
+margin_right = 360.0
+margin_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource( 1 )
+max_value = 99.0
+value = 10.0
+rounded = true
+align = 1
+
+[node name="ClassName" type="TextureRect" parent="Overlay"]
+margin_left = 155.0
+margin_top = 721.0
+margin_right = 533.0
+margin_bottom = 788.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="LineEdit" parent="Overlay/ClassName"]
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 354.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 2 )
+text = "This is a Test of a Name"
+align = 1
+clear_button_enabled = true
+placeholder_alpha = 0.591
+__meta__ = {
+"_edit_use_anchors_": false
+}
