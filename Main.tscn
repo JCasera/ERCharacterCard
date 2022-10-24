@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/StatsFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/ER_title_card.png" type="Texture" id=3]
 [ext_resource path="res://Assets/grad_to_black.png" type="Texture" id=4]
 [ext_resource path="res://StatsBox.gd" type="Script" id=5]
+[ext_resource path="res://ItemSlot.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -73,6 +74,7 @@ size_flags_vertical = 2
 custom_constants/separation = 9
 script = ExtResource( 5 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -353,15 +355,55 @@ value = 10.0
 rounded = true
 align = 1
 
+[node name="Equipment" type="HBoxContainer" parent="Overlay"]
+margin_left = 169.0
+margin_top = 617.0
+margin_right = 549.0
+margin_bottom = 680.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlot" parent="Overlay/Equipment" instance=ExtResource( 6 )]
+margin_right = 60.0
+margin_bottom = 63.0
+
+[node name="ItemSlot2" parent="Overlay/Equipment" instance=ExtResource( 6 )]
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 63.0
+
+[node name="ItemSlot3" parent="Overlay/Equipment" instance=ExtResource( 6 )]
+margin_left = 128.0
+margin_right = 188.0
+margin_bottom = 63.0
+
+[node name="ItemSlot4" parent="Overlay/Equipment" instance=ExtResource( 6 )]
+margin_left = 192.0
+margin_right = 252.0
+margin_bottom = 63.0
+
+[node name="ItemSlot5" parent="Overlay/Equipment" instance=ExtResource( 6 )]
+margin_left = 256.0
+margin_right = 316.0
+margin_bottom = 63.0
+
+[node name="ItemSlot6" parent="Overlay/Equipment" instance=ExtResource( 6 )]
+margin_left = 320.0
+margin_right = 380.0
+margin_bottom = 63.0
+
 [node name="ClassName" type="TextureRect" parent="Overlay"]
-margin_left = 155.0
+margin_left = 169.0
 margin_top = 721.0
-margin_right = 533.0
+margin_right = 547.0
 margin_bottom = 788.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
