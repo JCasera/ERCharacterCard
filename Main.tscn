@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/StatsFont.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/grad_to_black.png" type="Texture" id=4]
 [ext_resource path="res://StatsBox.gd" type="Script" id=5]
 [ext_resource path="res://ItemSlot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ImagesList.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -420,3 +421,16 @@ placeholder_alpha = 0.591
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+visible = true
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 709.0
+margin_bottom = 875.0
+
+[node name="ImagesList" parent="PopupPanel" instance=ExtResource( 7 )]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
