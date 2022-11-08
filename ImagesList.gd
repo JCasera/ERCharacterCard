@@ -2,6 +2,8 @@ extends ScrollContainer
 
 onready var list = $List
 onready var item_slot = preload("res://ItemSlot.tscn")
+var load_state = {}
+var img_mapping = {}
 
 signal equipment_selected(path)
 
@@ -15,15 +17,24 @@ func _ready():
 		heading.connect("pressed", self, "load_images_for_section", [s, heading])
 
 func load_images_for_section(section, node):
-	var img_grid = GridContainer.new()
-	img_grid.columns = 10
-	list.add_child_below_node(node, img_grid)
-	var img_list = get_images(section)
-	for i in img_list:
-		var slot = item_slot.instance()
-		img_grid.add_child(slot)
-		slot.set_image(i)
-		slot.connect("pressed_slot", self, "notify_fill_item_slot")
+	if not load_state.has(section):
+		var img_grid = GridContainer.new()
+		img_grid.columns = 10
+		list.add_child_below_node(node, img_grid)
+		var img_list = get_images(section)
+		for i in img_list:
+			var slot = item_slot.instance()
+			img_grid.add_child(slot)
+			slot.set_image(i)
+			slot.connect("pressed_slot", self, "notify_fill_item_slot")
+		img_mapping[section] = img_grid
+		load_state[section] = 1
+	elif load_state[section] == 1:
+		img_mapping[section].hide()
+		load_state[section] = -1
+	elif load_state[section] == -1:
+		img_mapping[section].show()
+		load_state[section] = 1
 
 func create_image_slot(img_path):
 	var texture = load(img_path)
