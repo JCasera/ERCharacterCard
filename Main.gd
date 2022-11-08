@@ -5,6 +5,12 @@ onready var equipment = $Overlay/Equipment
 onready var popup = $PopupPanel
 onready var popup_list = $PopupPanel/ImagesList
 
+onready var class_label = $Overlay/ClassName/Label
+onready var readonly_class_label = $Overlay/ClassName/ReadOnlyLabel
+onready var stats_box = $Overlay/StatsBox
+
+onready var screenshot = $Overlay/CaptureScreen
+
 var image_source = ""
 var current_slot
 
@@ -13,6 +19,7 @@ func _ready():
 	for e in equipment.get_children():
 		e.connect("pressed_slot", self, "show_equipment_list", [e])
 	popup_list.connect("equipment_selected", self, "set_equipment_for_current_slot")
+	screenshot.connect("pressed", self, "take_screenshot")
 
 func set_equipment_for_current_slot(path):
 	print(path)
@@ -23,6 +30,31 @@ func set_equipment_for_current_slot(path):
 func show_equipment_list(_path, e):
 	popup.popup_centered()
 	current_slot = e
+
+func take_screenshot():
+	screenshot.hide()
+	class_label.hide()
+	readonly_class_label.show()
+	readonly_class_label.text = class_label.text
+	stats_box.readonly_mode()
+	
+	$Timer.start(0.5)
+	yield($Timer, "timeout")
+	
+	var image = get_viewport().get_texture().get_data()
+	image.flip_y()
+	image.save_png("user://screenshot.png")
+	
+	class_label.show()
+	readonly_class_label.hide()
+	stats_box.editable_mode()
+	screenshot.show()
+	
+#func download_file():
+#	var image = get_viewport().get_texture().get_data()
+#	image.flip_y()
+#	var buf = image.save_png_to_buffer()
+#	JavaScript.download_buffer(buf, "screenshot.png")
 
 func drop_image(files, _source):
 	image_source = files[0]

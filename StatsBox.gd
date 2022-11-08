@@ -36,9 +36,48 @@ func update_level(value, stat):
 	else:
 		level_value.text = str(level_change + 1)
 		level_value.self_modulate = Color.white
+	get_node(stat + "/Value").text = str(value) + "       "
 
 func calc_stat_total():
 	var total = 0
 	for i in stats.values():
 		total += i
 	return total
+
+func editable_mode():
+	$Arcane/Selector.show()
+	$Faith/Selector.show()
+	$Intelligence/Selector.show()
+	$Dexterity/Selector.show()
+	$Strength/Selector.show()
+	$Endurance/Selector.show()
+	$Mind/Selector.show()
+	$Vigor/Selector.show()
+	
+	$Arcane/Value.hide()
+	$Faith/Value.hide()
+	$Intelligence/Value.hide()
+	$Dexterity/Value.hide()
+	$Strength/Value.hide()
+	$Endurance/Value.hide()
+	$Mind/Value.hide()
+	$Vigor/Value.hide()
+
+func readonly_mode():
+	$Arcane/Selector.hide()
+	$Faith/Selector.hide()
+	$Intelligence/Selector.hide()
+	$Dexterity/Selector.hide()
+	$Strength/Selector.hide()
+	$Endurance/Selector.hide()
+	$Mind/Selector.hide()
+	$Vigor/Selector.hide()
+	
+	$Arcane/Value.show()
+	$Faith/Value.show()
+	$Intelligence/Value.show()
+	$Dexterity/Value.show()
+	$Strength/Value.show()
+	$Endurance/Value.show()
+	$Mind/Value.show()
+	$Vigor/Value.show()
