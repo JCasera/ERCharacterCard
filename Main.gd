@@ -43,7 +43,13 @@ func take_screenshot():
 	
 	var image = get_viewport().get_texture().get_data()
 	image.flip_y()
-	image.save_png("user://screenshot.png")
+	var path_select = FileDialog.new()
+	add_child(path_select)
+	path_select.access = FileDialog.ACCESS_FILESYSTEM
+	path_select.window_title = 'Save a File'
+	path_select.popup_centered(Vector2(500,500))
+	yield(path_select, "popup_hide")
+	image.save_png(path_select.current_path + "/screenshot.png")
 	
 	class_label.show()
 	readonly_class_label.hide()

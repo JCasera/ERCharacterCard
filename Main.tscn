@@ -126,7 +126,6 @@ margin_right = 360.0
 margin_bottom = 29.0
 custom_fonts/font = ExtResource( 2 )
 text = "10       "
-percent_visible = -0.5
 
 [node name="Selector" type="SpinBox" parent="Overlay/StatsBox/Vigor"]
 margin_left = 309.0
