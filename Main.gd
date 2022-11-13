@@ -13,8 +13,11 @@ onready var screenshot = $Overlay/CaptureScreen
 
 var image_source = ""
 var current_slot
+var config = ConfigFile.new()
 
 func _ready():
+	var _err = config.load("user://settings.cfg")
+	
 	get_tree().connect("files_dropped", self, "drop_image")
 	for e in equipment.get_children():
 		e.connect("pressed_slot", self, "show_equipment_list", [e])
@@ -47,9 +50,12 @@ func take_screenshot():
 	add_child(path_select)
 	path_select.access = FileDialog.ACCESS_FILESYSTEM
 	path_select.window_title = 'Save a File'
+	path_select.current_path = config.get_value("Settings", "last_save_path", path_select.current_path)
 	path_select.popup_centered(Vector2(500,500))
 	yield(path_select, "popup_hide")
-	image.save_png(path_select.current_path + "/screenshot.png")
+	image.save_png(path_select.current_path)
+	config.set_value("Settings", "last_save_path", path_select.current_path)
+	config.save("user://settings.cfg")
 	
 	class_label.show()
 	readonly_class_label.hide()
