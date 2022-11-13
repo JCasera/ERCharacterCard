@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/StatsFont.tres" type="DynamicFont" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ItemSlot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ImagesList.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/ER_selected_highlight.png" type="Texture" id=8]
+[ext_resource path="res://Equipment.gd" type="Script" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -368,6 +369,7 @@ margin_left = 169.0
 margin_top = 617.0
 margin_right = 549.0
 margin_bottom = 680.0
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -444,6 +446,33 @@ valign = 1
 margin_right = 12.0
 margin_bottom = 20.0
 text = "Screenshot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Profiles" type="HBoxContainer" parent="Overlay"]
+margin_left = 528.0
+margin_top = 1.0
+margin_right = 705.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SaveProfile" type="Button" parent="Overlay/Profiles"]
+margin_right = 86.0
+margin_bottom = 23.0
+text = "Save Profile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadProfile" type="Button" parent="Overlay/Profiles"]
+margin_left = 90.0
+margin_right = 177.0
+margin_bottom = 23.0
+text = "Load Profile"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -37,6 +37,7 @@ func update_level(value, stat):
 		level_value.text = str(level_change + 1)
 		level_value.self_modulate = Color.white
 	get_node(stat + "/Value").text = str(value) + "       "
+	get_node(stat + "/Selector").value = value
 
 func calc_stat_total():
 	var total = 0
